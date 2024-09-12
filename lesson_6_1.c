@@ -6,50 +6,50 @@ void find_first_and_last_word(char *input) {
     char *last_word_start = NULL;
     char *current = input;
 
-    // Пропускаем ведущие пробелы
-    while (*current != '\0' && (*current & 0x20) == 0x20) { // пробел в ASCII - 0x20
+    // ГЏГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ ГўГҐГ¤ГіГ№ГЁГҐ ГЇГ°Г®ГЎГҐГ«Г»
+    while (*current != '\0' && (*current & 0x20) == 0x20) { // ГЇГ°Г®ГЎГҐГ« Гў ASCII - 0x20
         current++;
     }
 
-    // Находим первое слово
+    // ГЌГ ГµГ®Г¤ГЁГ¬ ГЇГҐГ°ГўГ®ГҐ Г±Г«Г®ГўГ®
     first_word_start = current;
 
-    // Ищем первое слово
+    // Г€Г№ГҐГ¬ ГЇГҐГ°ГўГ®ГҐ Г±Г«Г®ГўГ®
     while (*current != '\0') {
-        // Если текущий символ - не пробел
+        // Г…Г±Г«ГЁ ГІГҐГЄГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« - Г­ГҐ ГЇГ°Г®ГЎГҐГ«
         if ((*current & 0x20) != 0x20) {
             if (last_word_start == NULL) {
-                last_word_start = current; // Находим начало слова
+                last_word_start = current; // ГЌГ ГµГ®Г¤ГЁГ¬ Г­Г Г·Г Г«Г® Г±Г«Г®ГўГ 
             }
         } else {
-            // Приходится на пробел, значит, слово закончилось
+            // ГЏГ°ГЁГµГ®Г¤ГЁГІГ±Гї Г­Г  ГЇГ°Г®ГЎГҐГ«, Г§Г­Г Г·ГЁГІ, Г±Г«Г®ГўГ® Г§Г ГЄГ®Г­Г·ГЁГ«Г®Г±Гј
             if (last_word_start) {
-                *current = '\0'; // Завершаем слово
+                *current = '\0'; // Г‡Г ГўГҐГ°ГёГ ГҐГ¬ Г±Г«Г®ГўГ®
                 break;
             }
         }
         current++;
     }
 
-    // Если осталось последнее слово
+    // Г…Г±Г«ГЁ Г®Г±ГІГ Г«Г®Г±Гј ГЇГ®Г±Г«ГҐГ¤Г­ГҐГҐ Г±Г«Г®ГўГ®
     if (last_word_start && *last_word_start != '\0') {
-        // Ищем конец последнего слова
+        // Г€Г№ГҐГ¬ ГЄГ®Г­ГҐГ¶ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® Г±Г«Г®ГўГ 
         current = last_word_start;
         while (*current != '\0') {
             if ((*current & 0x20) == 0x20) {
-                *current = '\0'; // Завершить последнее слово
+                *current = '\0'; // Г‡Г ГўГҐГ°ГёГЁГІГј ГЇГ®Г±Г«ГҐГ¤Г­ГҐГҐ Г±Г«Г®ГўГ®
                 break;
             }
             current++;
         }
     }
 
-    // Печатаем первое и последнее слова
+    // ГЏГҐГ·Г ГІГ ГҐГ¬ ГЇГҐГ°ГўГ®ГҐ ГЁ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГҐ Г±Г«Г®ГўГ 
     if (first_word_start && *first_word_start != '\0') {
-        printf("Первое слово: %s\n", first_word_start);
+        printf("ГЏГҐГ°ГўГ®ГҐ Г±Г«Г®ГўГ®: %s\n", first_word_start);
     }
     if (last_word_start && *last_word_start != '\0') {
-        printf("Последнее слово: %s\n", last_word_start);
+        printf("ГЏГ®Г±Г«ГҐГ¤Г­ГҐГҐ Г±Г«Г®ГўГ®: %s\n", last_word_start);
     }
 }
 
@@ -57,10 +57,10 @@ int main() {
     char input1[100] = "  efg abcd zzz.  ";
     char input2[100] = " fffff kkkkkk a. ";
 
-    printf("Данные на входе: '%s'\n", input1);
+    printf("Г„Г Г­Г­Г»ГҐ Г­Г  ГўГµГ®Г¤ГҐ: '%s'\n", input1);
     find_first_and_last_word(input1);
 
-    printf("Данные на входе: '%s'\n", input2);
+    printf("Г„Г Г­Г­Г»ГҐ Г­Г  ГўГµГ®Г¤ГҐ: '%s'\n", input2);
     find_first_and_last_word(input2);
 
     return 0;
