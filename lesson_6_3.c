@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Определение структуры узла дерева
+// РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ СѓР·Р»Р° РґРµСЂРµРІР°
 typedef struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 } Node;
 
-// Функция для создания нового узла дерева
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ СѓР·Р»Р° РґРµСЂРµРІР°
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
@@ -17,7 +17,7 @@ Node* createNode(int data) {
     return newNode;
 }
 
-// Функция для вставки элемента в бинарное дерево
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІСЃС‚Р°РІРєРё СЌР»РµРјРµРЅС‚Р° РІ Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ
 Node* insert(Node* root, int data) {
     if (root == NULL) {
         return createNode(data);
@@ -30,7 +30,7 @@ Node* insert(Node* root, int data) {
     return root;
 }
 
-// Функция для нахождения минимального элемента в дереве
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РґРµСЂРµРІРµ
 int findMin(Node* root) {
     while (root->left != NULL) {
         root = root->left;
@@ -38,7 +38,7 @@ int findMin(Node* root) {
     return root->data;
 }
 
-// Функция для нахождения максимального элемента в дереве
+// СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РґРµСЂРµРІРµ
 int findMax(Node* root) {
     while (root->right != NULL) {
         root = root->right;
@@ -46,7 +46,7 @@ int findMax(Node* root) {
     return root->data;
 }
 
-// Функция для освобождения памяти, занятой деревом
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё, Р·Р°РЅСЏС‚РѕР№ РґРµСЂРµРІРѕРј
 void freeTree(Node* root) {
     if (root != NULL) {
         freeTree(root->left);
@@ -58,7 +58,7 @@ void freeTree(Node* root) {
 int main() {
     Node* root = NULL;
 
-    // Вставка элементов в дерево
+    // Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚РѕРІ РІ РґРµСЂРµРІРѕ
     root = insert(root, 10);
     insert(root, 5);
     insert(root, 15);
@@ -67,17 +67,17 @@ int main() {
     insert(root, 12);
     insert(root, 18);
 
-    // Нахождение минимального и максимального элемента
+    // РќР°С…РѕР¶РґРµРЅРёРµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Рё РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
     int minValue = findMin(root);
     int maxValue = findMax(root);
     int difference = maxValue - minValue;
 
-    // Вывод разницы
-    printf("Минимальный элемент: %d\n", minValue);
-    printf("Максимальный элемент: %d\n", maxValue);
-    printf("Разница между максимальным и минимальным элементом: %d\n", difference);
+    // Р’С‹РІРѕРґ СЂР°Р·РЅРёС†С‹
+    printf("РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚: %d\n", minValue);
+    printf("РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚: %d\n", maxValue);
+    printf("Р Р°Р·РЅРёС†Р° РјРµР¶РґСѓ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј Рё РјРёРЅРёРјР°Р»СЊРЅС‹Рј СЌР»РµРјРµРЅС‚РѕРј: %d\n", difference);
 
-    // Освобождение памяти
+    // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
     freeTree(root);
 
     return 0;
