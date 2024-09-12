@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Определение структуры узла для списка
+// РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ СѓР·Р»Р° РґР»СЏ СЃРїРёСЃРєР°
 typedef struct Node {
     int data;
     struct Node* next;
 } Node;
 
-// Функция для создания нового узла
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ СѓР·Р»Р°
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
@@ -15,7 +15,7 @@ Node* createNode(int data) {
     return newNode;
 }
 
-// Функция для добавления узла в конец списка
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СѓР·Р»Р° РІ РєРѕРЅРµС† СЃРїРёСЃРєР°
 void append(Node** head_ref, int new_data) {
     Node* new_node = createNode(new_data);
     if (*head_ref == NULL) {
@@ -30,7 +30,7 @@ void append(Node** head_ref, int new_data) {
     last->next = new_node;
 }
 
-// Функция для удаления узлов с нечетным порядковым номером
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ СѓР·Р»РѕРІ СЃ РЅРµС‡РµС‚РЅС‹Рј РїРѕСЂСЏРґРєРѕРІС‹Рј РЅРѕРјРµСЂРѕРј
 void removeOddPosition(Node** head_ref) {
     if (*head_ref == NULL) {
         return;
@@ -40,26 +40,26 @@ void removeOddPosition(Node** head_ref) {
     Node* prev = NULL;
     int position = 1;
 
-    // Удаляем узлы на нечетных позициях
+    // РЈРґР°Р»СЏРµРј СѓР·Р»С‹ РЅР° РЅРµС‡РµС‚РЅС‹С… РїРѕР·РёС†РёСЏС…
     while (current != NULL) {
-        if (position % 2 != 0) { // Нечетная позиция
+        if (position % 2 != 0) { // РќРµС‡РµС‚РЅР°СЏ РїРѕР·РёС†РёСЏ
             if (prev != NULL) {
                 prev->next = current->next;
             } else {
-                *head_ref = current->next; // Удаляем первый узел
+                *head_ref = current->next; // РЈРґР°Р»СЏРµРј РїРµСЂРІС‹Р№ СѓР·РµР»
             }
             Node* temp = current;
-            current = current->next; // Переходим к следующему узлу
-            free(temp); // Освобождаем память
+            current = current->next; // РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СѓР·Р»Сѓ
+            free(temp); // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ
         } else {
-            prev = current; // Запоминаем предыдущий узел на четной позиции
-            current = current->next; // Переходим к следующему узлу
+            prev = current; // Р—Р°РїРѕРјРёРЅР°РµРј РїСЂРµРґС‹РґСѓС‰РёР№ СѓР·РµР» РЅР° С‡РµС‚РЅРѕР№ РїРѕР·РёС†РёРё
+            current = current->next; // РџРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґСѓСЋС‰РµРјСѓ СѓР·Р»Сѓ
         }
         position++;
     }
 }
 
-// Функция для печати списка
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРµС‡Р°С‚Рё СЃРїРёСЃРєР°
 void printList(Node* node) {
     while (node != NULL) {
         printf("%d -> ", node->data);
@@ -68,7 +68,7 @@ void printList(Node* node) {
     printf("NULL\n");
 }
 
-// Освобождение памяти, занятой списком
+// РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё, Р·Р°РЅСЏС‚РѕР№ СЃРїРёСЃРєРѕРј
 void freeList(Node* head) {
     Node* temp;
     while (head != NULL) {
@@ -81,7 +81,7 @@ void freeList(Node* head) {
 int main() {
     Node* head = NULL;
 
-    // Добавление элементов в список
+    // Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРѕРє
     append(&head, 1);
     append(&head, 2);
     append(&head, 3);
@@ -89,16 +89,16 @@ int main() {
     append(&head, 5);
     append(&head, 6);
 
-    printf("Исходный список: ");
+    printf("РСЃС…РѕРґРЅС‹Р№ СЃРїРёСЃРѕРє: ");
     printList(head);
 
-    // Удаление узлов с нечетными позициями
+    // РЈРґР°Р»РµРЅРёРµ СѓР·Р»РѕРІ СЃ РЅРµС‡РµС‚РЅС‹РјРё РїРѕР·РёС†РёСЏРјРё
     removeOddPosition(&head);
 
-    printf("Список после удаления нечетных элементов: ");
+    printf("РЎРїРёСЃРѕРє РїРѕСЃР»Рµ СѓРґР°Р»РµРЅРёСЏ РЅРµС‡РµС‚РЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ: ");
     printList(head);
 
-    // Освобождение памяти
+    // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
     freeList(head);
 
     return 0;
