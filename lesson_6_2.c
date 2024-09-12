@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Определение структуры узла дерева
+// РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ СѓР·Р»Р° РґРµСЂРµРІР°
 typedef struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 } Node;
 
-// Функция для создания нового узла дерева
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РЅРѕРІРѕРіРѕ СѓР·Р»Р° РґРµСЂРµРІР°
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
@@ -17,7 +17,7 @@ Node* createNode(int data) {
     return newNode;
 }
 
-// Функция для вставки элемента в бинарное дерево
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІСЃС‚Р°РІРєРё СЌР»РµРјРµРЅС‚Р° РІ Р±РёРЅР°СЂРЅРѕРµ РґРµСЂРµРІРѕ
 Node* insert(Node* root, int data) {
     if (root == NULL) {
         return createNode(data);
@@ -30,7 +30,7 @@ Node* insert(Node* root, int data) {
     return root;
 }
 
-// Функция для вычисления суммы всех элементов в дереве
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃСѓРјРјС‹ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РІ РґРµСЂРµРІРµ
 int sum(Node* root) {
     if (root == NULL) {
         return 0;
@@ -38,7 +38,7 @@ int sum(Node* root) {
     return root->data + sum(root->left) + sum(root->right);
 }
 
-// Функция для освобождения памяти, занятой деревом
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё, Р·Р°РЅСЏС‚РѕР№ РґРµСЂРµРІРѕРј
 void freeTree(Node* root) {
     if (root != NULL) {
         freeTree(root->left);
@@ -50,7 +50,7 @@ void freeTree(Node* root) {
 int main() {
     Node* root = NULL;
 
-    // Вставка элементов в дерево
+    // Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚РѕРІ РІ РґРµСЂРµРІРѕ
     root = insert(root, 10);
     insert(root, 5);
     insert(root, 15);
@@ -59,11 +59,11 @@ int main() {
     insert(root, 12);
     insert(root, 18);
 
-    // Вычисление суммы всех элементов
+    // Р’С‹С‡РёСЃР»РµРЅРёРµ СЃСѓРјРјС‹ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ
     int totalSum = sum(root);
-    printf("Сумма всех элементов в дереве: %d\n", totalSum);
+    printf("РЎСѓРјРјР° РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РІ РґРµСЂРµРІРµ: %d\n", totalSum);
 
-    // Освобождение памяти
+    // РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё
     freeTree(root);
 
     return 0;
